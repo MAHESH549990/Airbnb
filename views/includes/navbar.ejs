@@ -1,0 +1,31 @@
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom fixed-top">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><i class="fa-brands fa-airbnb"></i>Airbnb</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between bg-white p-3" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+      <a class="nav-link " href="/listings"><i class="fa-solid fa-house"></i>Home</a>
+      <a class="nav-link" href="/listings/new"><i class="fa-solid fa-circle-plus"></i>Add new listings</a>
+      <a class="nav-link" href="#"><i class="fa-solid fa-circle-user"></i>Profile</a>
+      <%if(!currUser){%>
+      <a class="nav-link" href="/user/login">Login</a>
+       <a class="nav-link" href="/user/signup">SignUp</a>
+      <%}%>
+      <%if(currUser){%>
+      <a class="nav-link" href="/user/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+      <%}%>
+      </div>
+           <div class="d-flex">
+              <form class="d-flex" role="search">
+                <input class="form-control me-2 mx-auto" type="search" placeholder="Search" aria-label="Search"/>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+
+      </div>
+      </div>
+    </nav>
+  <br><br>
