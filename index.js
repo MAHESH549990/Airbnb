@@ -4,7 +4,6 @@ const path=require("path");
 const port=8080;
 const ejsMate=require("ejs-mate");
 const methodOverride=require("method-override");
-const asyncWrap=require("./utils/asyncWrap.js");
 const ExpressError=require("./utils/ExpressError.js");
 const listings=require("./routes/listings.js");
 const reviews=require("./routes/reviews.js");

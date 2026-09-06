@@ -4,6 +4,7 @@ const MONGO_URL="mongodb://127.0.0.1:27017/Airbnb";
 const defaultImage = "https://plus.unsplash.com/premium_photo-1661962862470-a03bcc2fb415?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 const Review=require("./reviews.js");
+const User=require("./user.js");
 
 
 main()
@@ -51,9 +52,12 @@ let listingsSchema=new Schema({
         type:Schema.Types.ObjectId,
         ref:"Review"
       }
-    ]
+    ],
+  owner:{
+    type:Schema.Types.ObjectId,
+    ref:"User"
   }
-);
+});
 
 listingsSchema.post("findOneAndDelete",async(listing)=>{
     if(listing){
