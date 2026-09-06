@@ -16,6 +16,11 @@ router.get("/new",isLoggedIn,(req,res)=>{
   res.render("listings/newListing.ejs");
 });
 
+router.get("/profile",isLoggedIn,(req,res)=>{
+   let listing=req.user;
+   res.render("listings/profile.ejs",{listing});
+});
+
 router.get("/:id",asyncWrap(async(req,res)=>{
   let {id}=req.params;
   let data=await Listing.findById(id).populate({path:"reviews",populate:({ path:"author"})}).populate("owner");
@@ -67,5 +72,6 @@ router.delete("/:id",isLoggedIn,isOwner,asyncWrap(async(req,res)=>{
    req.flash("success","Listing Deleted");
    res.redirect("/listings");
 }));
+
 
 module.exports=router;

@@ -9,7 +9,9 @@
       <div class="navbar-nav">
       <a class="nav-link " href="/listings"><i class="fa-solid fa-house"></i>Home</a>
       <a class="nav-link" href="/listings/new"><i class="fa-solid fa-circle-plus"></i>Add new listings</a>
-      <a class="nav-link" href="#"><i class="fa-solid fa-circle-user"></i>Profile</a>
+      <%if(currUser){%>
+      <a class="nav-link" href="/listings/profile"><i class="fa-solid fa-circle-user"></i>Profile</a>
+      <%}%>
       <%if(!currUser){%>
       <a class="nav-link" href="/user/login">Login</a>
        <a class="nav-link" href="/user/signup">SignUp</a>

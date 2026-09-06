@@ -1,0 +1,11 @@
+<%-layout("/template/boilerplate.ejs")%>
+<div class="container bg-body-white p-5 rounded-5 row">
+  <h1 class="offset-lg-1 offset-md-1 offset-sm-0">Hello <b><%=listing.username%></b> Welcome to <i class="fa-brands fa-airbnb" style="color:red"></i>Airbnb</h1>
+  <div class="user-profile-img col-lg-3 col-md-4 col-sm-12 mt-5 offset-lg-1 offset-md-1 offset-sm-0">
+     <img src="/images/user_profile.png">
+  </div>
+  <div class="about-user col-lg-6 col-md-6 col-sm-12 mt-5">
+    <h3 class="mt-2"><b>Name:</b> <%=listing.username%></h3>
+    <h3 class="mt-3"><b>Email:</b> <%=listing.email%></h3>  
+  </div>
+</div>
