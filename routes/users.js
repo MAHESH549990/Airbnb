@@ -4,6 +4,7 @@ const asyncWrap=require("../utils/asyncWrap.js");
 
 const User=require("../models/user.js");
 const passport=require("passport");
+const { saveRedirectUrl } = require("../middleware.js");
 
 router.get("/signup",(req,res)=>{
   res.render("userLogin/signup.ejs");
@@ -14,9 +15,13 @@ router.post("/signup",asyncWrap(async(req,res)=>{
       let {username,password,email}=req.body;
       let newUser={username,email};
       let newUserDetails=await User.register(newUser,password);
-      console.log(newUserDetails);
+      req.login(newUserDetails,(err)=>{
+        if(err){
+          return next(err);
+        }
       req.flash("success","Welcome to Airbnb");
       res.redirect("/listings");
+      })
   }
   catch(err){
       req.flash("failure",err.message);
@@ -30,13 +35,15 @@ router.get("/login",(req,res)=>{
 
 router.post(
   "/login",
+  saveRedirectUrl,
   passport.authenticate("local", {
     failureRedirect: "/user/login",
     failureFlash: "Invalid username or password"
   }),
   (req, res) => {
     req.flash("success", "Welcome back to Airbnb");
-    res.redirect("/listings");
+    let redirectUrlNew=res.locals.redirectUrl || "/listings";
+    res.redirect(redirectUrlNew);
   }
 );
 
